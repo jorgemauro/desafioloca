@@ -20,3 +20,9 @@ dominio da aplicação e suas regras de negocio
 Infrastructure
 db - configurações e interface com  o banco de dados
 repository - realiza a persistencia dos dados
+--------------------------------------------------------
+Front-End
+utilização do nextJS para ter uma das tecnologias para tornar a experiência do usuarios mais rapido
+
+API
+Utilização do NestJS para cumprir o papel de bff
