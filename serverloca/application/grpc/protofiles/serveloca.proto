@@ -6,18 +6,54 @@ option go_package = "protofiles;pb";
 
 message AccountRegistration {
     string accountId = 1;
-    string accountNumber = 2;
-    string Name = 3;
-    string Cpf = 4;
-    string Matricula = 5;
-    string createdAt = 6;
+    string kind = 3;
+    string login = 4;
+    string password = 5;
 }
 
 message Account {
     string accountId = 1;
-    string accountNumber = 2;
-    string Name = 3;
-    string Cpf = 4;
-    string Matricula = 5;
-    string createdAt = 6;
+    string kind = 3;
+    string login = 4;
+    string password = 5;
+}
+message Vehicle{
+    string vehicleId = 1;
+    string placa = 3;
+    string modelo = 4;
+    string valorHora = 5;
+    string combustivel = 6;
+    string limitePortaMala = 7;
+    string categoria = 8;
+}
+message LocationRegistration {
+    string Id = 1;
+    string accountId = 2;
+    string vehicleId = 3;
+    string amount = 4;
+    string status = 5;
+    string cancelDescription = 6;
+    string createdAt = 5;
+}
+message LocationInfo {
+    string Id = 1;
+    Account Account = 2;
+    Vehicle vehicle = 3;
+    string Amount = 4;
+    string Status = 5;
+    string CancelDescription = 6;
+    string createdAt = 5;
+}
+Location{
+    string accountId
+    string vehicleId
+}
+message LocationCreatedResult {
+    string Id = 1;
+    string accountId = 2;
+    string vehicleId = 3;
+}
+service LocationService {
+    rpc RegisterLocation (LocationRegistration) returns (LocationCreatedResult) {};
+    rpc Find(Location) returns (LocationInfo) {};
 }
