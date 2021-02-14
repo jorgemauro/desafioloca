@@ -1,6 +1,7 @@
 package model
 
 import (
+	"errors"
 	"time"
 
 	"github.com/asaskevich/govalidator"
@@ -8,27 +9,33 @@ import (
 )
 
 type Account struct {
-	Base      `valid:"required"`
-	Name      string `gorm:"column:name;type:varchar(255);not null" valid:"notnull"`
-	Number    string `json:"number" gorm:"type:varchar(20)" valid:"notnull"`
-	Cpf       string `json:"cpf" valid:"notnull"`
-	Matricula string `json:"matricula"`
+	Base     `valid:"required"`
+	Kind     string `gorm:"column:kind;type:varchar(255);not null" valid:"notnull"`
+	Login    string `json:"login" gorm:"type:varchar(20)" valid:"notnull"`
+	Password string `json:"password" valid:"notnull"`
+	User     *User  `valid:"-"`
+	UserID   string `gorm:"column:user_id;type:uuid;not null" valid:"-"`
 }
 
 func (account *Account) isValid() error {
 	_, err := govalidator.ValidateStruct(account)
+
+	if account.Kind != "matricula" && account.Kind != "cpf" {
+		return errors.New("invalid type of key")
+	}
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func NewAccount(number string, Name string, cpf string, matricula string) (*Account, error) {
+func NewAccount(user *User, login string, password string, kind string) (*Account, error) {
 	account := Account{
-		Name:      Name,
-		Number:    number,
-		Cpf:       cpf,
-		Matricula: matricula,
+		Kind:     kind,
+		Login:    login,
+		Password: password,
+		User:     user,
+		UserID:   user.ID,
 	}
 	account.ID = uuid.NewV4().String()
 	account.CreatedAt = time.Now()
