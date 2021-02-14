@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package github.com.jorgemauro.desafioloca;
+
+option go_package = "protofiles;pb";
+
+message AccountRegistration {
+    string accountId = 1;
+    string accountNumber = 2;
+    string Name = 3;
+    string Cpf = 4;
+    string Matricula = 5;
+    string createdAt = 6;
+}
+
+message Account {
+    string accountId = 1;
+    string accountNumber = 2;
+    string Name = 3;
+    string Cpf = 4;
+    string Matricula = 5;
+    string createdAt = 6;
+}
