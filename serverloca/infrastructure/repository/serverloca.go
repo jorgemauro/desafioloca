@@ -18,6 +18,13 @@ func (r AccountRepositoryDb) AddAdress(adress *model.Adress) error {
 	}
 	return nil
 }
+func (r AccountRepositoryDb) AddUser(user *model.User) error {
+	err := r.Db.Create(user).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
 
 func (r AccountRepositoryDb) AddAccount(account *model.Account) error {
 	err := r.Db.Create(account).Error
@@ -42,7 +49,16 @@ func (r AccountRepositoryDb) FindAdress(id string) (*model.Adress, error) {
 	r.Db.First(&adress, "id = ?", id)
 
 	if adress.ID == "" {
-		return nil, fmt.Errorf("no bank found")
+		return nil, fmt.Errorf("no adress found")
 	}
 	return &adress, nil
+}
+func (r AccountRepositoryDb) FindUser(id string) (*model.User, error) {
+	var user model.User
+	r.Db.First(&user, "id = ?", id)
+
+	if user.ID == "" {
+		return nil, fmt.Errorf("no user found")
+	}
+	return &user, nil
 }

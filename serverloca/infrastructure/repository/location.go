@@ -29,7 +29,7 @@ func (t *LocationRepositoryDb) Save(Location *model.Location) error {
 
 func (t *LocationRepositoryDb) Find(id string) (*model.Location, error) {
 	var Location model.Location
-	t.Db.Preload("AccountFrom.Bank").First(&Location, "id = ?", id)
+	t.Db.Preload("AccountFrom.User").First(&Location, "id = ?", id)
 
 	if Location.ID == "" {
 		return nil, fmt.Errorf("no key was found")
