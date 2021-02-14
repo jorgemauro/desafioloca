@@ -9,8 +9,8 @@ import (
 
 type Account struct {
 	Base      `valid:"required"`
-	Name      string `json:"name" valid:"notnull"`
-	Number    string `json:"number" valid:"notnull"`
+	Name      string `gorm:"column:name;type:varchar(255);not null" valid:"notnull"`
+	Number    string `json:"number" gorm:"type:varchar(20)" valid:"notnull"`
 	Cpf       string `json:"cpf" valid:"notnull"`
 	Matricula string `json:"matricula"`
 }
