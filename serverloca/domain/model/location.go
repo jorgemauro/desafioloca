@@ -33,7 +33,7 @@ type Location struct {
 	VehicleFromID     string   `gorm:"column:vehicle_from_id;type:uuid;" valid:"notnull"`
 	Amount            float64  `json:"amount" gorm:"type:float" valid:"notnull"`
 	Status            string   `json:"status" gorm:"type:varchar(20)" valid:"notnull"`
-	Description       string   `json:"description" gorm:"type:varchar(255)" valid:"-"`
+	HoursTotal        string   `json:"hours_total" gorm:"type:varchar(255)" valid:"-"`
 	CancelDescription string   `json:"cancel_description" gorm:"type:varchar(255)" valid:"-"`
 }
 
@@ -73,15 +73,15 @@ func (t *Location) Cancel(description string) error {
 	return err
 }
 
-func NewLocation(account *Account, vehicle *Vehicle, amount float64, description string, id string) (*Location, error) {
+func NewLocation(account *Account, vehicle *Vehicle, amount float64, id string, hoursTotal string) (*Location, error) {
 	Location := Location{
 		Account:       account,
 		AccountFromID: account.ID,
 		Vehicle:       vehicle,
 		VehicleFromID: vehicle.ID,
 		Amount:        amount,
+		HoursTotal:    hoursTotal,
 		Status:        LocationPending,
-		Description:   description,
 	}
 	if id == "" {
 		Location.ID = uuid.NewV4().String()

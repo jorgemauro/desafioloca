@@ -8,13 +8,17 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+type AccountRepositoryInterface interface {
+	registerAccount(pixKey *Account) (*Account, error)
+	AddUser(user *User) error
+	AddAccount(account *Account) error
+	FindAccount(id string) (*Account, error)
+}
 type Account struct {
 	Base     `valid:"required"`
 	Kind     string `gorm:"column:kind;type:varchar(255);not null" valid:"notnull"`
 	Login    string `json:"login" gorm:"type:varchar(20)" valid:"notnull"`
 	Password string `json:"password" valid:"notnull"`
-	User     *User  `valid:"-"`
-	UserID   string `gorm:"column:user_id;type:uuid;not null" valid:"-"`
 }
 
 func (account *Account) isValid() error {
@@ -29,13 +33,11 @@ func (account *Account) isValid() error {
 	return nil
 }
 
-func NewAccount(user *User, login string, password string, kind string) (*Account, error) {
+func NewAccount(login string, password string, kind string) (*Account, error) {
 	account := Account{
 		Kind:     kind,
 		Login:    login,
 		Password: password,
-		User:     user,
-		UserID:   user.ID,
 	}
 	account.ID = uuid.NewV4().String()
 	account.CreatedAt = time.Now()

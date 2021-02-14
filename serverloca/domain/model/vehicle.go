@@ -7,6 +7,9 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+type VehicleRepositoryInterface interface {
+	FindVehicle(id string) (*Vehicle, error)
+}
 type Vehicle struct {
 	Base            `valid:"required"`
 	Placa           string `json:"placa" valid:"notnull"`
