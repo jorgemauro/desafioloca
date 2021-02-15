@@ -1,0 +1,19 @@
+.btn {
+    font-size: 1.2em;
+    margin-left: 15px;
+    padding: 3px 20px;
+    border-radius: 7px;
+
+    &.btn-primary {
+        &.color-domain {
+            background-color: $color-domain;
+            border-color: $color-domain;
+        }
+
+    &.btn-info {
+        background-color: #f8f8f8;
+        border-color: #ddd;
+        color: $color-text;
+    }
+}
+}
