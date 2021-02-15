@@ -7,13 +7,9 @@ const Navbar: React.FunctionComponent = () => {
       className={`navbar navbar-expand-lg ${classes.root}`}
     >
       <div className={`container-fluid ${classes.navbarBody}`}>
-        <Link href="/bank-accounts" as="/bank-accounts">
+        <Link href="/" as="/">
           <a className={`navbar-brand ${classes.navbarBrand}`} href="#">
-            <img
-              src="/img/icon_banco.png"
-              alt=""
-              className={classes.logoLocation}
-            />
+            Desafioloca
           </a>
         </Link>
           <div
