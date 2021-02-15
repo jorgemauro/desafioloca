@@ -1,9 +1,7 @@
 # desafioloca
 
-utilizando GO para subir o serviço e consumir o apache kafka
-ddd -> para separar a complexidade do dominio(negocio) e a complexidade.
 Buscando uma aplicação flexivel para outros formatos de comunicação
-utilizando assim ports and adapters
+busquei utilizar o padrão ports and adapters
 - Estrutura do serverloca:
   - Camada de aplicação
   - Factory - instancia objetos com muitas dependencias
@@ -16,7 +14,7 @@ utilizando assim ports and adapters
   - Comandos registrados para iniciars serviços(CLI)
 
 - Domain
- - dominio da aplicação e suas regras de negocio
+  - dominio da aplicação e suas regras de negocio
 
 - Infrastructure
  - db -> configurações e interface com  o banco de dados
