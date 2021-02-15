@@ -9,7 +9,6 @@ return(<Layout>
       Teste Inicial
     </div>
   </Layout>)
-
 }
 
 export default Login

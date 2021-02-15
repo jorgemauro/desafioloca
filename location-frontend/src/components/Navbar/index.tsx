@@ -14,10 +14,6 @@ const Navbar: React.FunctionComponent = () => {
               alt=""
               className={classes.logoLocation}
             />
-            <div className={classes.locationName}>
-              <span>Cod - 001</span>
-              <h2>BBX</h2>
-            </div>
           </a>
         </Link>
           <div
@@ -31,9 +27,6 @@ const Navbar: React.FunctionComponent = () => {
                   alt=""
                   className={classes.iconUser}
                 />
-                <p className={classes.ownerName}>
-                  Teste
-                </p>
               </li>
             </ul>
           </div>

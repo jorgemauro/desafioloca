@@ -26,7 +26,7 @@ const UserAccount =(props)=>{
     export default UserAccount
 
     export const getServerSideProps: GetServerSideProps = async () => {
-      const { data: userAccounts } = await bankHttp.get("user-accounts/userAccount");
+      const { data: userAccounts } = await bankHttp.get("api/user-accounts/userAccount");
       return {
         props: {
           userAccounts,
