@@ -5,22 +5,22 @@ ddd -> para separar a complexidade do dominio(negocio) e a complexidade.
 Buscando uma aplicação flexivel para outros formatos de comunicação
 utilizando assim ports and adapters
 - Estrutura do serverloca:
-Camada de aplicação
-Factory - instancia objetos com muitas dependencias
-Kafka - consumo e processamento de trasações com o apache Kafka
-grpc - Estabelecimento das dos protocolos de gRPC para facilitar consultas com alguns protocolos provenientes da tecnologia
-model - Estruturas que vão receber  as requisições externas
-usecase - executa o fluxo de ações de acordo com as regras do negocio
+  - Camada de aplicação
+  - Factory - instancia objetos com muitas dependencias
+  - Kafka - consumo e processamento de trasações com o apache Kafka
+  - grpc - Estabelecimento das dos protocolos de gRPC para facilitar consultas com alguns protocolos provenientes da tecnologia
+  - model - Estruturas que vão receber  as requisições externas
+  - usecase - executa o fluxo de ações de acordo com as regras do negocio
 
-CMD
-Comandos registrados para iniciars serviços(CLI)
+- CMD
+  - Comandos registrados para iniciars serviços(CLI)
 
-Domain
-dominio da aplicação e suas regras de negocio
+- Domain
+ - dominio da aplicação e suas regras de negocio
 
-Infrastructure
-db -> configurações e interface com  o banco de dados
-repository -> realiza a persistencia dos dados
+- Infrastructure
+ - db -> configurações e interface com  o banco de dados
+ - repository -> realiza a persistencia dos dados
 --------------------------------------------------------
 - location-api ---> utilização do nesteJs responsavel por ser o intermediario entre nosso dominio e o front-end
 --------------------------------------------------------
